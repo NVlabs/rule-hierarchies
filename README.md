@@ -25,7 +25,7 @@ The main steps to setting up your custom rule hierarchy are:
 - Create an ordered list of rules, e.g., `rules = [AlwaysGreater(1.0), AlwaysLesser(2.0)]` and pass it to the `RuleHierarchy` class to create a rule hierarchy; see [demo/demo.py](demo/demo.py) for a simple example.
 
 ## Demo
-A simple demo of how to use the rule hierarchy is presented in [demo/demo.py](demo/demo.py) and a more involved demo that demonstrates planning with a continuous optimizer is provided in [demo/optimization_demo.py](demo/optimization_demo.py).
+A simple demo of how to use the rule hierarchy is presented in [demo/simple_demo.py](demo/simple_demo.py) and a more involved demo that demonstrates planning with a continuous optimizer is provided in [demo/optimization_demo.py](demo/optimization_demo.py).
 
 ## Citation
 Please cite the relevant paper if you use this code:

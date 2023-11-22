@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name="Rule Hierarchy",
+    name="Rule Hierarchies",
     version="0.0.1",
     description="Create STL rule hierarchies and perform operations with it",
     author="Sushant Veer",
