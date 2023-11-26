@@ -19,7 +19,7 @@ A demo of how to build a rule hierarchy is provided in [demo/simple_demo.py](dem
 ## How To Use
 The main steps to setting up your custom rule hierarchy are:
 - Create a subclass of [`Rule`](rule_hierarchy/rules/rule.py) tailored to the specific rule being implemented in the [`rules`](rule_hierarchy/rules/) directory.
-    - The class should have a `as_stl_formula()` and a `prepare_signals()` method which generates an STLCG formula and a properly shaped signal for STLCG to evaluate, respectively.
+    - The class should have a `as_stl_formula()` and a `prepare_signals()` method which generates an [`STLCG`](https://github.com/StanfordASL/stlcg/) formula and a properly shaped signal for STLCG to evaluate, respectively.
     - Examples of how to formulate the rule class can be found in the [`rules`](rule_hierarchy/rules/) directory.
     - Include an import to the class in `__init__.py` in [`rules/__init__.py`](rule_hierarchy/rules/__init__.py).
 - Create an ordered list of rules, e.g., `rules = [AlwaysGreater(1.0), AlwaysLesser(2.0)]` and pass it to the `RuleHierarchy` class to create a rule hierarchy; see [demo/simple_demo.py](demo/simple_demo.py) for a simple example.
