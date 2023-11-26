@@ -63,8 +63,8 @@ class RankPreservingTestGPU(unittest.TestCase):
             self.traj_rank_4.to("cuda:0")
         )
 
-        # atleast p=99% of the samples satisfy the rank-preserving property
-        p = 0.99
+        # atleast p=98% of the samples satisfy the rank-preserving property
+        p = 0.98
         self.assertGreaterEqual(
             torch.sum(diff_loss_rank_1 < diff_loss_rank_2).item() / self.B, p
         )

@@ -16,7 +16,7 @@ class AbstractRuleHierarchy(ABC):
         """
         Evaluation of STL rule hierarchy
             Inputs:
-            ord_nodes (List[STL_Formula]): list of rule classes in descending order of hierarchy
+            ordered_formulae (List[STL_Formula]): list of STLCG formulae in descending order of hierarchy
         """
         self.stl_rule_hierarchy = ordered_formulae
         self.depth = len(ordered_formulae)
@@ -25,7 +25,7 @@ class AbstractRuleHierarchy(ABC):
     def evaluate_robustness(self, signals: List[Tuple[torch.Tensor]]) -> torch.Tensor:
         """
         Evaluate the rule satisfaction for all rules in the hierarchy
-        Input: signals is a list of K time-series of shape [B, T, d]  for each formula in the rulebook
+        Input: signals is a list of K time-series of shape [B, T, D]  for each formula in the rulebook
         Output: Tensor of shape [B, K], where the element at index (b,k) represents the min satisfaction of the formula k by the trajectory b
         """
         rule_sat_vec = []  # Rule satisfaction vector
@@ -34,7 +34,6 @@ class AbstractRuleHierarchy(ABC):
 
         return torch.stack(rule_sat_vec, dim=1)
 
-    # @TODO: remove reward vec from output
     def _cost(
         self, robustness: torch.Tensor, scaling: Optional[torch.Tensor] = None
     ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
@@ -79,9 +78,6 @@ class AbstractRuleHierarchy(ABC):
         rule_scales = 2.01 ** (self.depth - torch.arange(0.0, self.depth)).to(
             self.device
         )
-        # reward_vec = (
-        #     rule_scales * torch.sigmoid(30 * torch.tanh(robustness * scaling)).float()
-        # )
 
         reward_vec = rule_scales * (torch.tanh(robustness * scaling * 30) + 1) * 0.5
 
