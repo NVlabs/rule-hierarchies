@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name="Rule Hierarchies",
@@ -6,7 +6,7 @@ setup(
     description="Create STL rule hierarchies and perform operations with it",
     author="Sushant Veer",
     author_email="sveer@nvidia.com",
-    packages=setuptools.find_packages(),
+    packages=find_packages(),
     install_requires=[
         "numpy",
         "stlcg @ git+https://github.com/StanfordASL/stlcg.git@dev",
